@@ -47,7 +47,6 @@ with col2:
 
 # code for Prediction
 diab_diagnosis = ''
-bc=''
 
 # creating a button for Prediction
 
@@ -56,9 +55,7 @@ if st.button('Diabetes Test Result'):
     
     if (diab_prediction[0] == 1):
       diab_diagnosis = 'The person is diabetic'
-      bc='Basic medication :  Metformin,Glumetza'
     else:
       diab_diagnosis = 'The person is not diabetic'
     
 st.success(diab_diagnosis)
-st.success(bc)
