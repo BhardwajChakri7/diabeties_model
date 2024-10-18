@@ -69,19 +69,19 @@ state = st.selectbox(
 )
 
 # Collect user input
-col1, col2 = st.columns(2)
+ol1, col2 = st.columns(2)
 
 with col1:
-    Pregnancies = st.number_input('Number of Pregnancies', min_value=0, max_value=20)
-    BloodPressure = st.number_input('Blood Pressure value', min_value=0, max_value=200)
-    Insulin = st.number_input('Insulin Level', min_value=0, max_value=800)
-    DiabetesPedigreeFunction = st.number_input('Diabetes Pedigree Function value', min_value=0.0, max_value=2.5, step=0.01)
+    Pregnancies = st.number_input('Number of Pregnancies', min_value=0, max_value=20, value=1)
+    BloodPressure = st.number_input('Blood Pressure value', min_value=0, max_value=200, value=70)
+    Insulin = st.number_input('Insulin Level', min_value=0, max_value=800, value=100)
+    DiabetesPedigreeFunction = st.number_input('Diabetes Pedigree Function value', min_value=0.0, max_value=2.5, value=0.5, step=0.01)
 
 with col2:
-    Glucose = st.number_input('Glucose Level', min_value=0, max_value=200)
-    SkinThickness = st.number_input('Skin Thickness value', min_value=0, max_value=100)
-    BMI = st.number_input('BMI value', min_value=0.0, max_value=60.0, step=0.1)
-    Age = st.number_input('Age of the Person', min_value=1, max_value=120)
+    Glucose = st.number_input('Glucose Level', min_value=0, max_value=200, value=100)
+    SkinThickness = st.number_input('Skin Thickness value', min_value=0, max_value=100, value=20)
+    BMI = st.number_input('BMI value', min_value=0.0, max_value=60.0, value=22.0, step=0.1)
+    Age = st.number_input('Age of the Person', min_value=1, max_value=120, value=30)
 
 # Prediction logic
 if st.button('Get Diabetes Test Result 🧪'):
