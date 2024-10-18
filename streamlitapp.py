@@ -20,6 +20,7 @@ page_bg_img = '''
         max-width: 700px;
         margin: 50px auto;
         padding: 25px;
+        border: 2px solid #ccc;
         border-radius: 15px;
         background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(12px);
