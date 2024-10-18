@@ -69,7 +69,7 @@ state = st.selectbox(
 )
 
 # Collect user input
-ol1, col2 = st.columns(2)
+col1, col2 = st.columns(2)
 
 with col1:
     Pregnancies = st.number_input('Number of Pregnancies', min_value=0, max_value=20, value=1)
