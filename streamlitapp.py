@@ -14,7 +14,7 @@ page_bg_img = '''
         background-repeat: no-repeat;
     }
     [data-testid="stHeader"] {
-        background: rgba(0, 0, 0, 0); 
+        background: rgba(0, 0, 0, 0);
     }
     .block-container {
         max-width: 700px;
@@ -58,27 +58,44 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 # Title
 st.markdown("<h1>🔍 Diabetes Prediction using Machine Learning</h1>", unsafe_allow_html=True)
 
+# Location input container
+with st.container():
+    state = st.selectbox(
+        'Select your location (Indian State)',
+        options=[''] + [
+            'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 
+            'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 
+            'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 
+            'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 
+            'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'
+        ],
+        index=0
+    )
+
 # Collect user input
 col1, col2 = st.columns(2)
 
 with col1:
-    Pregnancies = st.number_input('Number of Pregnancies', min_value=0, max_value=20, value=1)
-    BloodPressure = st.number_input('Blood Pressure value', min_value=0, max_value=200, value=70)
-    Insulin = st.number_input('Insulin Level', min_value=0, max_value=800, value=100)
-    DiabetesPedigreeFunction = st.number_input('Diabetes Pedigree Function value', min_value=0.0, max_value=2.5, value=0.5, step=0.01)
+    Pregnancies = st.number_input('Number of Pregnancies', min_value=0, max_value=20)
+    BloodPressure = st.number_input('Blood Pressure value', min_value=0, max_value=200)
+    Insulin = st.number_input('Insulin Level', min_value=0, max_value=800)
+    DiabetesPedigreeFunction = st.number_input('Diabetes Pedigree Function value', min_value=0.0, max_value=2.5, step=0.01)
 
 with col2:
-    Glucose = st.number_input('Glucose Level', min_value=0, max_value=200, value=100)
-    SkinThickness = st.number_input('Skin Thickness value', min_value=0, max_value=100, value=20)
-    BMI = st.number_input('BMI value', min_value=0.0, max_value=60.0, value=22.0, step=0.1)
-    Age = st.number_input('Age of the Person', min_value=1, max_value=120, value=30)
+    Glucose = st.number_input('Glucose Level', min_value=0, max_value=200)
+    SkinThickness = st.number_input('Skin Thickness value', min_value=0, max_value=100)
+    BMI = st.number_input('BMI value', min_value=0.0, max_value=60.0, step=0.1)
+    Age = st.number_input('Age of the Person', min_value=1, max_value=120)
 
 # Prediction logic
 if st.button('Get Diabetes Test Result 🧪'):
-    diab_prediction = diabetes_model.predict(
-        [[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]
-    )
-    if diab_prediction[0] == 1:
-        st.error('🚨 The person is diabetic.')
+    if state == '':
+        st.error("Please select your location.")
     else:
-        st.success('✅ The person is not diabetic.')
+        diab_prediction = diabetes_model.predict(
+            [[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]]
+        )
+        if diab_prediction[0] == 1:
+            st.error('🚨 The person is diabetic.')
+        else:
+            st.success('✅ The person is not diabetic.')
