@@ -58,19 +58,15 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 # Title
 st.markdown("<h1>🔍 Diabetes Prediction using Machine Learning</h1>", unsafe_allow_html=True)
 
-# Location input container
-with st.container():
-    state = st.selectbox(
-        'Select your location (Indian State)',
-        options=[''] + [
-            'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 
-            'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 
-            'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 
-            'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 
-            'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'
-        ],
-        index=0
-    )
+# Location input
+state = st.selectbox(
+    'Select your location (Indian State)', 
+    ['', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 
+     'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 
+     'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 
+     'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 
+     'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal']
+)
 
 # Collect user input
 col1, col2 = st.columns(2)
